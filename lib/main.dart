@@ -38,6 +38,7 @@ class BallPage extends StatelessWidget {
       ),
       body: Container(
         decoration: const BoxDecoration(
+          //set linear gradient for the background app
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -47,7 +48,7 @@ class BallPage extends StatelessWidget {
             ],
           ),
         ),
-        child: Ball(),
+        child: Ball(), //call the Ball class
       ),
     );
   }
@@ -59,11 +60,12 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
-  int ballNumber = 1;
+  int ballNumber = 1; //initialize the ballNumber equal to 1
 
+  //the function for changing the ballNumber randomly once it is being clicked.
   void changeBallNumber() {
     int newBallNumber;
-    //make sure the randomize ball number will not same as current ball number.
+    //using do-while loop to make sure the randomize ball number will not same as current ball number.
     do {
       newBallNumber = Random().nextInt(5) + 1;
       //in the range of 1 to 5 when we want to use the result as an index in an array of 5 elements. If "nextInt(6)" might get IndexOutOfBounds error.
@@ -80,10 +82,12 @@ class _BallState extends State<Ball> {
       //GestureDetector is a more general-purpose widget that can detect a wide range of user gestures like taps, double-taps, long presses, drags and scrolls.
       child: GestureDetector(
         onTap: () {
+          //trigger the function when it is tap or click
           changeBallNumber();
         },
         child: Container(
           decoration: const BoxDecoration(
+            //add some box shadow effect to the image
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
